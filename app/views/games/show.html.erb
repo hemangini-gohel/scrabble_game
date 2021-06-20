@@ -1,0 +1,103 @@
+<div class="container-fluid my-5">
+
+  <div class="row">    
+    <div class="col-md-3"></div>    
+
+    <div class="col-md-6">
+      
+      <%= link_to 'Back', games_path(), class: 'btn btn-sm btn-primary my-2' %>       
+        <div class="card">
+            
+            <div class="card-header">
+              <h4 class="justify-content-center text-center text-secondary"> 
+                Game Details
+              </h4>
+            </div>
+
+            <div class="card-body align-items-center justify-content-center">
+            
+              <div class="row d-flex">
+                <div class="col-md-12">
+                    <div class="form-group">
+                      <label for="name" class="font-weight-bold">Name:</label>
+                      <p class='form-control'> 
+                        <%= @game.name%>
+                      </p>
+                    </div>
+                </div>      
+              </div>
+
+              <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="start_date" class="font-weight-bold">Start Date:</label>                
+                        <p class='form-control'>
+                          <%= @game.start_date%>
+                        </p>
+                    </div>
+                </div>
+                      
+                <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="end_date" class="font-weight-bold">End Date:</label>                  
+                        <p class='form-control'>
+                          <%= @game.end_date %> 
+                        </p>
+                    </div>
+                </div>
+              </div>
+
+              <hr>            
+              <h4 class="py-3">First Player Details</h4>
+
+              <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">                  
+                      <label for="player1_id" class="font-weight-bold">Player :</label>
+                      <p class='form-control'>
+                        <%= Member.find(@game.player1_id).first_name %>  
+                      </p>
+                    </div>
+                </div>
+                      
+                <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="start_date" class="font-weight-bold">Score:</label>    
+                        <p class='form-control'>
+                          <%= @game.player1_score %>  
+                        </p>                  
+                    </div>
+                </div>
+              </div>
+
+              <hr>            
+              <h4 class="py-3">Second Player Details</h4>
+
+              <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">                  
+                      <label for="player2_id" class="font-weight-bold">Player :</label>
+                      <p class='form-control'>                      
+                        <%= Member.find(@game.player2_id).first_name%>  
+                      </p>
+                    </div>
+                </div>
+                      
+                <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="player2_score" class="font-weight-bold">Score:</label>                      
+                        <p class='form-control'>                      
+                          <%= @game.player2_score %> 
+                        </p>
+                    </div>
+                </div>
+              </div>
+            </div>
+          
+        </div>
+
+      </div>
+      <div class="col-md-3"></div>
+    </div>
+</div>
+

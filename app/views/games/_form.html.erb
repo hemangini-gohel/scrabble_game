@@ -1,0 +1,99 @@
+<div class="container-fluid my-5">
+
+  <div class="row">    
+    <div class="col-md-3"></div>    
+
+    <div class="col-md-6">
+
+      <%= form_with model: @game, local: true do |f| %>
+
+        <div class="card">
+            
+            <div class="card-header">
+              <h4 class="justify-content-center text-center text-secondary"> 
+                <%= @game.new_record? ? 'Add Game' : 'Edit Game'%>
+              </h4>
+            </div>
+
+            <div class="card-body align-items-center justify-content-center">
+            
+              <div class="row d-flex">
+                <div class="col-md-12">
+                    <div class="form-group">
+                      <label for="name" class="font-weight-bold">Name:</label>            
+                      <%= f.text_field :name, required: true, class: "form-control", placeholder: 'Enter game name' %>            
+                    </div>
+                </div>      
+              </div>
+
+              <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="start_date" class="font-weight-bold">Start Date:</label>                
+                        <%=f.date_field :start_date, required: true, class: 'form-control'%>
+                    </div>
+                </div>
+                      
+                <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="end_date" class="font-weight-bold">End Date:</label>                  
+                        <%=f.date_field :end_date, required: true, class: 'form-control' %>
+                    </div>
+                </div>
+              </div>
+
+              <hr>            
+              <h4 class="py-3">First Player Details</h4>
+
+              <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">                  
+                      <label for="player1_id" class="font-weight-bold">Player :</label>
+                      <%= f.select :player1_id,  options_from_collection_for_select(Member.all, :id, :first_name, @game.player1_id), { include_blank: 'Select Player' }, required: true, class: 'form-control' %>  
+                    </div>
+                </div>
+                      
+                <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="start_date" class="font-weight-bold">Score:</label>                      
+                        <%= f.text_field :player1_score,  required: true, class: 'form-control', placeholder: 'Enter score' %>  
+                    </div>
+                </div>
+              </div>
+
+              <hr>            
+              <h4 class="py-3">Second Player Details</h4>
+
+              <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">                  
+                      <label for="player2_id" class="font-weight-bold">Player :</label>
+                      <%= f.select :player2_id,  options_from_collection_for_select(Member.all, :id, :first_name, @game.player2_id), { include_blank: 'Select Player' }, required: true, class: 'form-control' %>  
+                    </div>
+                </div>
+                      
+                <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="player2_score" class="font-weight-bold">Score:</label>                      
+                        <%= f.text_field :player2_score,  required: true, class: 'form-control', placeholder: 'Enter score' %>  
+                    </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-12">
+                <%= f.submit "Submit", disable_with: 'Submiting...', class: "btn btn-primary float-right my-3" %>
+                <%= link_to 'cancel', games_path(),  class: "btn btn-danger float-right my-3 mr-2"  %>
+              </div>
+            </div>
+
+        </div>
+
+      </div>
+      <div class="col-md-3"></div>
+    </div>
+
+  <% end %>
+</div>
+

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ScrabbleClubRor</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>    
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>  
+    <% flash.each do |key, msg| %>
+      <div class="alert alert-<%= key %> custom-alert" id="alert-msg">
+        <%= msg %>      
+      </div>
+    <% end %>
+    <% if notice %>
+      <p class="alert alert-success"><%= notice %></p>
+    <% end %>
+    <% if alert %>
+      <p class="alert alert-danger"><%= alert %></p>
+    <% end %>
+    <%= render 'layouts/navbar' %>
+    <%= yield %>
+  </body>
+</html>
