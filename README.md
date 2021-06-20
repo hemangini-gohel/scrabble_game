@@ -35,6 +35,7 @@ Next, create and migrate the database:
 ```
 $ rails db:create
 $ rails db:migrate
+$ rails db:seed
 ```
 
 Start rails server:
