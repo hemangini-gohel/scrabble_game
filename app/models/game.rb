@@ -3,7 +3,7 @@ class Game < ApplicationRecord
   attr_accessor :player1_id, :player1_score, :player2_id, :player2_score
   
   has_many :players, dependent: :destroy  
-  validates :name, :start_date, :end_date
+  validates :name, :start_date, :end_date, presence: true
   after_save :add_update_players
 
   def add_update_players
